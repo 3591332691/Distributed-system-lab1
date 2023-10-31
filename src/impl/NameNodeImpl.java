@@ -1,7 +1,7 @@
 package impl;
 //TODO: your implementation
 import api.NameNodePOA;
-
+import utils.D_File;
 public class NameNodeImpl extends NameNodePOA {
     private static final String FS_IMAGE_PATH = "FsImage";
     private FileSystem fileSystem;
@@ -20,12 +20,10 @@ public class NameNodeImpl extends NameNodePOA {
             e.printStackTrace();
         }
     }
-    private void createFile(String filepath) {
+    private void createFile(String filepath) {//TODO:写分配数据块策略，然后用setBlockList(List<String> block_list)写入
         try {
             D_File new_file = new D_File(filepath);
-            string fileContents = "filepath:"+new_file.getFilepath()+";"+"block_list:"+new_file.getBlockList()+";"+
-            "write_permission:"+new_file.getWritePermission()+";"+"file_size:"+new_file.getFileSize()+";"+
-            "modification_time:"+new_file.getModificationTime()+";"+"file_size:"+new_file.getFileSize()+";";
+            string fileContents =new_file.getFileContent();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(FS_IMAGE_PATH, true), StandardCharsets.UTF_8));
             writer.write(fileContents);
@@ -85,7 +83,8 @@ public class NameNodeImpl extends NameNodePOA {
         else{
             //文件不存在
             createFile(filepath);
-            return null;
+            fileContent = readFileFromFsImage(filepath);
+            return fileContent;
         }
         return null;
     }

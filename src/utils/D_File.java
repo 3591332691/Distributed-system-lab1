@@ -64,4 +64,10 @@ public class D_File {
     public void setCreationTime(long creation_time) {
         this.creation_time = creation_time;
     }
+    public long getFileContent() {
+        string temp = "filepath:"+new_file.getFilepath()+";"+"block_list:"+new_file.getBlockList()+";"+
+            "write_permission:"+new_file.getWritePermission()+";"+"file_size:"+new_file.getFileSize()+";"+
+            "modification_time:"+new_file.getModificationTime()+";"+"file_size:"+new_file.getFileSize()+";";
+        return temp;
+    }
 }
