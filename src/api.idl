@@ -7,5 +7,9 @@ module api {
     };
     interface NameNode{
     //TODO: complete the interface design
+        string open(in string filepath, in long mode);
+        void writeFile(in long fd, in byteArray bytes);
+        byteArray readFile(in long fd);
+        void close(in string fileInfo);
     };
 };
