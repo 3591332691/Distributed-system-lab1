@@ -2,9 +2,9 @@ package impl;
 //TODO: your implementation
 import api.Client;
 public class ClientImpl implements Client{
-
+    
     @Override
-    public int open(String filepath, int mode) {
+    public int open(String filepath, int mode) {// 返回fd
         return 0;
     }
 

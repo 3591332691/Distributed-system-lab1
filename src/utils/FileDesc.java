@@ -21,7 +21,7 @@ public class FileDesc {
     /* The following method is for conversion, so we can have interface that return string, which is easy to write in idl */
     @Override
     public String toString() {
-        return null;
+         return Long.toString(id);//返回fd的string形式
     }
 
     public static FileDesc fromString(String str){

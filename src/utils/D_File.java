@@ -1,8 +1,11 @@
 import java.util.List;
-
-public class D_File {
+public class DataBlock{//代表一个数据块的地址
+    string dataNodeIdentifier;
+    int block_id;
+}
+public class D_File {//代表文件
     private String filepath;
-    private List<String> block_list;
+    private List<DataBlock> block_list;
     private boolean write_permission;
     private long file_size;
     private long modification_time;
@@ -25,11 +28,11 @@ public class D_File {
         this.filepath = filepath;
     }
 
-    public List<String> getBlockList() {
+    public List<DataBlock> getBlockList() {
         return block_list;
     }
 
-    public void setBlockList(List<String> block_list) {
+    public void setBlockList(List<DataBlock> block_list) {
         this.block_list = block_list;
     }
 
@@ -66,7 +69,7 @@ public class D_File {
     }
     public long getFileContent() {
         string temp = "filepath:"+new_file.getFilepath()+";"+"block_list:"+new_file.getBlockList()+";"+
-            "write_permission:"+new_file.getWritePermission()+";"+"file_size:"+new_file.getFileSize()+";"+
+            "write_permission:"+new_file.getWritePermission()+";"+
             "modification_time:"+new_file.getModificationTime()+";"+"file_size:"+new_file.getFileSize()+";";
         return temp;
     }
