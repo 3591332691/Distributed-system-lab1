@@ -2,8 +2,12 @@
     "workbench.colorCustomizations": {
         "editor.lineHighlightBackground": "#5316e22d",
         "editor.lineHighlightBorder": "#9fced11f",
+        
         "activityBar.background": "#302F06",
         "titleBar.activeBackground": "#434208",
         "titleBar.activeForeground": "#FCFBE6"
-    }
+    },
+    "editor.tokenColorCustomizations": {
+        "comments": "#519D9E", // 注释颜色
+    },
 }
