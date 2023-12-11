@@ -1,13 +1,10 @@
 package api;
 
 
-/**
-* api/byteArrayHelper.java .
-* 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
-* 从api.idl
-* 2023年10月31日 星期二 上午01时51分04秒 CST
-*/
 
+
+
+//typedef octet byteArray[4*1024];
 abstract public class byteArrayHelper
 {
   private static String  _id = "IDL:api/byteArray:1.0";
@@ -31,7 +28,7 @@ abstract public class byteArrayHelper
     if (__typeCode == null)
     {
       __typeCode = org.omg.CORBA.ORB.init ().get_primitive_tc (org.omg.CORBA.TCKind.tk_octet);
-      __typeCode = org.omg.CORBA.ORB.init ().create_array_tc ((int)(4 * 1024), __typeCode );
+      __typeCode = org.omg.CORBA.ORB.init ().create_sequence_tc (0, __typeCode);
       __typeCode = org.omg.CORBA.ORB.init ().create_alias_tc (api.byteArrayHelper.id (), "byteArray", __typeCode);
     }
     return __typeCode;
@@ -45,22 +42,16 @@ abstract public class byteArrayHelper
   public static byte[] read (org.omg.CORBA.portable.InputStream istream)
   {
     byte value[] = null;
-    value = new byte[(int)(4 * 1024)];
-    for (int _o0 = 0;_o0 < ((int)(4 * 1024)); ++_o0)
-    {
-      value[_o0] = istream.read_octet ();
-    }
+    int _len0 = istream.read_long ();
+    value = new byte[_len0];
+    istream.read_octet_array (value, 0, _len0);
     return value;
   }
 
   public static void write (org.omg.CORBA.portable.OutputStream ostream, byte[] value)
   {
-    if (value.length != ((int)(4 * 1024)))
-      throw new org.omg.CORBA.MARSHAL (0, org.omg.CORBA.CompletionStatus.COMPLETED_MAYBE);
-    for (int _i0 = 0;_i0 < ((int)(4 * 1024)); ++_i0)
-    {
-      ostream.write_octet (value[_i0]);
-    }
+    ostream.write_long (value.length);
+    ostream.write_octet_array (value, 0, value.length);
   }
 
 }

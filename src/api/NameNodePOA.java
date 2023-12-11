@@ -1,12 +1,7 @@
 package api;
 
 
-/**
-* api/NameNodePOA.java .
-* ��IDL-to-Java ������ (����ֲ), �汾 "3.2"����
-* ��api.idl
-* 2023��10��31�� ���ڶ� ����01ʱ51��04�� CST
-*/
+
 
 public abstract class NameNodePOA extends org.omg.PortableServer.Servant
  implements api.NameNodeOperations, org.omg.CORBA.portable.InvokeHandler
@@ -14,7 +9,7 @@ public abstract class NameNodePOA extends org.omg.PortableServer.Servant
 
   // Constructors
 
-  private static java.util.Hashtable _methods = new java.util.Hashtable ();
+  private static java.util.Hashtable<String,Integer> _methods = new java.util.Hashtable<String,Integer> ();
   static
   {
     _methods.put ("open", new java.lang.Integer (0));
@@ -59,10 +54,10 @@ public abstract class NameNodePOA extends org.omg.PortableServer.Servant
        case 2:  // api/NameNode/readFile
        {
          int fd = in.read_long ();
-         byte $result[] = null;
+         String $result = null;
          $result = this.readFile (fd);
          out = $rh.createReply();
-         api.byteArrayHelper.write (out, $result);
+         out.write_string ($result);
          break;
        }
 
@@ -104,4 +99,3 @@ public abstract class NameNodePOA extends org.omg.PortableServer.Servant
 
 
 } // class NameNodePOA
-

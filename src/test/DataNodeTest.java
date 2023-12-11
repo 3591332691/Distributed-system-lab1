@@ -1,6 +1,5 @@
 package test;
 
-import api.DataNode;
 import impl.DataNodeImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,8 +27,8 @@ public class DataNodeTest {
         int blockId = dn.randomBlockId();
         byte[] toWrite = "Hello World".getBytes(StandardCharsets.UTF_8);
 
-        dn.append(blockId, toWrite);
-        byte[] read = dn.read(blockId);
+        dn.append(blockId, toWrite);//这里使用了append
+        byte[] read = dn.read(blockId);//再读出来
 
         int n = toWrite.length;
         int N = read.length;

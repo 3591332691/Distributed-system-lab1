@@ -1,12 +1,6 @@
 package api;
 
 
-/**
-* api/DataNodePOA.java .
-* 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
-* 从api.idl
-* 2023年10月31日 星期二 上午01时51分04秒 CST
-*/
 
 public abstract class DataNodePOA extends org.omg.PortableServer.Servant
  implements api.DataNodeOperations, org.omg.CORBA.portable.InvokeHandler
@@ -14,7 +8,7 @@ public abstract class DataNodePOA extends org.omg.PortableServer.Servant
 
   // Constructors
 
-  private static java.util.Hashtable _methods = new java.util.Hashtable ();
+  private static java.util.Hashtable<String,Integer> _methods = new java.util.Hashtable<String,Integer> ();
   static
   {
     _methods.put ("read", new java.lang.Integer (0));

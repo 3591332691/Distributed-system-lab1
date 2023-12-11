@@ -1,15 +1,15 @@
 module api {
-    typedef octet byteArray[4*1024];
+    //typedef octet byteArray[4*1024];
+    typedef sequence<octet> byteArray;
     interface DataNode {
         byteArray read(in long block_id);
         void append(in long block_id, in byteArray bytes);
         long randomBlockId();
     };
     interface NameNode{
-    //TODO: complete the interface design
         string open(in string filepath, in long mode);
         void writeFile(in long fd, in byteArray bytes);
-        byteArray readFile(in long fd);
+        string readFile(in long fd);
         void close(in string fileInfo);
     };
 };

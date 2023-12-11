@@ -1,12 +1,7 @@
 package api;
 
 
-/**
-* api/_NameNodeStub.java .
-* 由IDL-to-Java 编译器 (可移植), 版本 "3.2"生成
-* 从api.idl
-* 2023年10月31日 星期二 上午01时51分04秒 CST
-*/
+
 
 public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements api.NameNode
 {
@@ -54,14 +49,14 @@ public class _NameNodeStub extends org.omg.CORBA.portable.ObjectImpl implements 
             }
   } // writeFile
 
-  public byte[] readFile (int fd)
+  public String readFile (int fd)
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
                 org.omg.CORBA.portable.OutputStream $out = _request ("readFile", true);
                 $out.write_long (fd);
                 $in = _invoke ($out);
-                byte $result[] = api.byteArrayHelper.read ($in);
+                String $result = $in.read_string ();
                 return $result;
             } catch (org.omg.CORBA.portable.ApplicationException $ex) {
                 $in = $ex.getInputStream ();

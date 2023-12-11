@@ -1,6 +1,5 @@
 package test;
 import utils.FileDesc;
-import api.NameNode;
 import impl.NameNodeImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +24,8 @@ public class NameNodeTest {
     /* open a non-exist file */
     public void testCreate(){
         String filename = FileSystem.newFilename();
-        FileDesc fileInfo = FileDesc.fromString(nn.open(filename, 0b10));
+         FileDesc fileInfo = FileDesc.fromString(nn.open(filename, 0b10));
+
         assertNotNull(fileInfo);
         close(fileInfo);
     }
@@ -46,8 +46,8 @@ public class NameNodeTest {
     /* open an existing and being written file in writing mode */
     public void testOpenWrite(){
         String filename = FileSystem.newFilename();
-        FileDesc fileInfo = FileDesc.fromString(nn.open(filename, 0b10));
-        FileDesc fileInfo2 = FileDesc.fromString(nn.open(filename, 0b11));
+        FileDesc fileInfo = FileDesc.fromString(nn.open(filename, 0b10));//write
+        FileDesc fileInfo2 = FileDesc.fromString(nn.open(filename, 0b11));//write and read
         assertNotNull(fileInfo);
         assertNull(fileInfo2);
         close(fileInfo);
@@ -57,9 +57,9 @@ public class NameNodeTest {
     /* open an existing and being written file in reading mode, multiple times */
     public void testOpenRead(){
         String filename = FileSystem.newFilename();
-        FileDesc fileInfo = FileDesc.fromString(nn.open(filename, 0b10));
-        FileDesc fileInfo2 = FileDesc.fromString(nn.open(filename, 0b01));
-        FileDesc fileInfo3 = FileDesc.fromString(nn.open(filename, 0b01));
+        FileDesc fileInfo = FileDesc.fromString(nn.open(filename, 0b10));//write
+        FileDesc fileInfo2 = FileDesc.fromString(nn.open(filename, 0b01));//read
+        FileDesc fileInfo3 = FileDesc.fromString(nn.open(filename, 0b01));//read
         assertNotNull(fileInfo);
         assertNotNull(fileInfo2);
         assertNotNull(fileInfo3);
